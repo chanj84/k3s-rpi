@@ -1,0 +1,5 @@
+[main]
+k8s-main-[01:01].rpi
+
+[node]
+k8s-node-[01:02].rpi
