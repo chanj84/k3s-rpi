@@ -1,0 +1,11 @@
+---
+- name: Kubernetes install
+  shell: 'curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" sh -s -'
+
+- name: Kubernetes token
+  shell: 'cat /var/lib/rancher/k3s/server/node-token'
+  register: cluster_token
+
+- name: Print token
+  debug:
+    var: cluster_token.stdout

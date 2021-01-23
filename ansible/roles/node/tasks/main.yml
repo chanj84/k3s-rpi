@@ -1,0 +1,7 @@
+---
+- name: Print token
+  debug:
+    msg: "{{ hostvars['k8s-main-01.rpi']['cluster_token']['stdout'] }}"
+
+- name: Kubernetes install
+  shell: 'curl -sfL https://get.k3s.io | K3S_URL="https://k8s-main-01.rpi:6443" K3S_TOKEN="{{ hostvars["k8s-main-01.rpi"]["cluster_token"]["stdout"] }}" sh -s -'

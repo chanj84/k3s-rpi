@@ -1,0 +1,18 @@
+---
+- name: Check uninstall (main)
+  stat:
+    path: /usr/local/bin/k3s-uninstall.sh
+  register: main_file
+
+- name: Check uninstall (node)
+  stat:
+    path: /usr/local/bin/k3s-agent-uninstall.sh
+  register: node_file
+
+- name: Kubernetes uninstall (main)
+  shell: k3s-uninstall.sh
+  when: "main_file.stat.exists == True"
+
+- name: Kubernetes uninstall (node)
+  shell: k3s-agent-uninstall.sh
+  when: "node_file.stat.exists == True"

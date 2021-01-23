@@ -1,0 +1,8 @@
+---
+- name: Get host information
+  shell: 'uname -a'
+  register: uname
+
+- name: Print host information
+  debug:
+    var: uname.stdout
